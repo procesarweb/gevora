@@ -1,0 +1,83 @@
+{%include 'sitio/cabecera.html'%}
+<br><br>
+
+<h2>Usuario<br></h2>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="class-header">
+                    <strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;Creación de Habitaciones</strong>
+                </div>
+
+                <!--Inicio del formulario-->
+                <form action="/habitaciones/habitaciones/guardar" method="POST" enctype="multipart/form-data">
+                                         
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Descripción de La Habitación</label>
+                            <!--Para modiicar el estilo con que se muestra el placeholder class="placeholder"-->
+                        <input type="text" class="form-control" name="descripcionhabitacion" placeholder="Describir la Habitación">
+                    </div>
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Precio-$COP</label>
+                            <input type="text" class="form-control" name="preciohabitacion" placeholder="Digite el Precio">
+                    </div>
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Estado</label>
+                            <input type="text" class="form-control" name="estadohabitacion" placeholder="Seleccione.:">
+                    </div>
+
+                    <br>
+                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<button type="submit" class="btn btn-primary" align="center">Generar Habitación</button>
+                </form>
+
+            </div>
+        
+        </div>
+        <div class="col-md-18"></div>
+    </div>
+</div>
+
+<div class="row">
+<!--Mostrar los datos de la base de datos -->
+<div class="col-md-4"><h2>  <br><br> </h2></div>
+
+<div class="col-md-8" align="center"><form action="/habitaciones/"><br><button type="submit" class="btn"><h5>Ver Habitaciones </h5></button> </form>
+    <table class="table" id=""placeholder">
+        <thead>
+            <th>Núm Habitación</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </thead>
+        
+        <tbody><h6>
+            {% for datos in habitaciones%}
+            <tr>
+                <td>{{ datos[0]}}</td>
+                <td>{{ datos[1]}}</td>
+                <td>{{ datos[2]}}</td>
+                <td>{{ datos[3]}}</td>
+                <td>
+                    <form action="/habitaciones/habitaciones/editarh" method="post">
+                        <input type="hidden" name="id" value="{{ datos[0]}}">
+                        <button type="submit" class="btn btn-success">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/habitaciones/habitaciones/eliminarh" method="post">
+                        <input type="hidden" name="id" value="{{ datos[0]}}">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor%}
+        </h6>
+        </tbody>
+    </table>
+</div>
+</div>
+
+{%include 'sitio/footer.html'%}

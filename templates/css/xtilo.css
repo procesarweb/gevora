@@ -1,0 +1,43 @@
+::placeholder {
+    color: blue;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+
+}
+
+.img-fluid{
+    img-fluidmax-width: 100%;
+    height: auto;
+}
+
+.showcase {
+    
+    font: blue;
+    position: relative;
+  }
+  
+  .bg-image {
+    opacity: 0.7;
+  }
+  
+  .bg-img-title {
+    position: absolute;
+    top: 420px;
+    left: 20px;
+  }
+
+.form-registrarse
+{
+    width: 450px;
+    
+    background-color: #24303c;||
+    padding: 3em;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px #000000;
+}

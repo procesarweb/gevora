@@ -1,0 +1,110 @@
+{%include 'admin/cabecera.html'%}
+<br>
+<h2>Registro Cliente</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="class-header">
+                    Datos del Cliente
+                </div>
+
+                <!--Inicio del formulario-->
+                <form action="/admin/cliente/guardar" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="">Tipo documento</label>
+                        <input type="text" class="form-control" name="tipo_doc_cli" placeholder="Elegir su tipo de Documento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Número de documento de identidad</label>
+                        <input type="text" class="form-control" name="id_cli" placeholder="Digite su número de Documento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Primer Nombre</label>
+                        <input type="text" class="form-control" name="nom1_cli" placeholder="Digite su Primer Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Segundo Nombre</label>
+                        <input type="text" class="form-control" name="nom2_cli" placeholder="Digite su Segundo Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Primer Apellido</label>
+                        <input type="text" class="form-control" name="ape1_cli" placeholder="Digite su Primer Apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Seundo Apellido</label>
+                        <input type="text" class="form-control" name="ape2_cli" placeholder="Digite su Segundo Apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" name="f_nac_cli" placeholder="Fecha de Nacimiento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Email</label>
+                        <input type="correo" class="form-control" name="email_cli" placeholder="Digite aquí su correo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Número de Celular</label>
+                        <input type="text" class="form-control" name="movil_cli" placeholder="Digite aquí su numero de celular">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Dirección</label>
+                        <input type="text" class="form-control" name="dir_res_cli" placeholder="Digite aquí su dirección">
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="">Estado</label>
+                        <input type="correo" class="form-control" name="estado_cli" placeholder="Estado del cliente.:">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+
+            </div>
+        </div>
+        <!--Mostrar los datos de la base de datos -->
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Imágen</th>
+                    <th>URL</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    {% for dato in libros%}
+                    <tr>
+                        <td>{{ dato[0]}}</td>
+                        <td>{{ dato[1]}}</td>
+                        <td>{{ dato[2]}}</td>
+                        <td>{{ dato[3]}}</td>
+                        <td>{{ dato[4]}}</td>
+                        <td>{{ dato[5]}}</td>
+                        <td>{{ dato[6]}}</td>
+                        <td>{{ dato[7]}}</td>
+                        <td>{{ dato[8]}}</td>
+                        <td>{{ dato[9]}}</td>
+                        <td>{{ dato[10]}}</td>
+                        <td>{{ dato[11]}}</td>
+                        <td>
+                            <form action="/admin/cliente/editar" method="post">
+                                <input type="hidden" name="id" value="{{ dato[1]}}">
+                                <button type="submit" class="btn btn-success">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/admin/cliente/eliminar" method="post">
+                                <input type="hidden" name="id" value="{{ dato[1]}}">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%include 'sitio/footer.html'%}

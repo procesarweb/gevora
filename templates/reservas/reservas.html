@@ -1,0 +1,97 @@
+{%include 'admin/cabecera.html'%}
+<br><br>
+
+<h2>Bienvenid@s Reserve aquí<br></h2>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="class-header">
+                    <strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;Reservar Habitaciones</strong>
+                </div>
+
+                <!--Inicio del formulario-->
+                <form action="/reservas/reservas/guardar" method="POST" enctype="multipart/form-data">
+                                         
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Fecha de Ingreso</label>
+                            <!--Para modiicar el estilo con que se muestra el placeholder class="placeholder"-->
+                        <input type="date" id="dateini" class="form-control" name="fingreso" placeholder="Fecha de Ingreso">
+                    </div>
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Fecha de Salida</label>
+                            <!--Para modiicar el estilo con que se muestra el placeholder class="placeholder"-->
+                        <input type="date" id="datefin" class="form-control" name="fsalida" placeholder="Fecha de Salida">
+                    </div>
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Cantidad de dias</label>
+                            <input type="text" class="form-control" value=(contdias) name="cantdias" placeholder="" onclick="calcular">
+                            <p><script>calcular(contdias) document.write(contdias)</script></p>
+                        </div>
+                    
+
+
+ 
+
+ 
+<script>
+function calcular(){
+	var fechaini = new Date(document.getElementById('dateini').value);
+	var fechafin = new Date(document.getElementById('datefin').value);
+	var diasdif= fechafin.getTime()-fechaini.getTime();
+	var contdias = Math.round(diasdif/(1000*60*60*24));
+	document.write(contdias);
+    
+}
+</script>
+
+
+                    <div class="mb-1">
+                        <label for=""><font color="blue">Número de habitaciones a reservar</label>
+                            <input type="text" class="form-control" name="canthabitacion" placeholder="Num de Habitaciones">
+                    </div>
+                        <br><br>
+
+                    <br>
+                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<button type="submit" class="btn btn-primary" align="center">Calcular Reserva</button>
+                </form>
+
+            </div>
+        
+        </div>
+        <div class="col-md-18"></div>
+    </div>
+</div>
+
+<div class="row">
+<!--Mostrar los datos de la base de datos -->
+<div class="col-md-4"><h2>  <br><br> </h2></div>
+
+<div class="col-md-8" align="center"><h4> Disponibilidad de Habitaciones </h4>
+    <table class="table" id="" placeholder="">
+        <thead>
+            <th>Núm Habitación</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </thead>
+        
+        <tbody><h6>
+            {% for datos in habitaciones%}
+            <tr>
+                <td>{{ datos[0]}}</td>
+                <td>{{ datos[1]}}</td>
+                <td>{{ datos[2]}}</td>
+                <td>{{ datos[3]}}</td>
+                <td>Reservar | Modificar Reserva </td>
+            </tr>
+            {% endfor%}
+        </h6>
+        </tbody>
+    </table>
+</div>
+</div>
+
+{%include 'sitio/footer.html'%}

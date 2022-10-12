@@ -1,0 +1,48 @@
+{%include 'sitio/cabecera.html'%} 
+<!--Inicio del formulario-->
+
+<form action="/registrar/guardar" method="POST" enctype="multipart/form-data">
+                                         
+    <div class="mb-1">
+        <label for=""><font color="blue">Tipo de Documento</label>
+        <div class="dropdown">
+            <select name="tipodoc">
+              Tipo de Documento
+              <option class="dropdown-item" href="#">Cédula de ciudadania</option>
+              <option class="dropdown-item" href="#">Pasaporte</option>
+              <option class="dropdown-item" href="#">Tarjeta de Identidad</option>
+            </select>
+            
+          </div>
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Número de documento</label>
+        <input type="number" class="form-control" name="numerodocumento" placeholder="Ingrese numero de documento">
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Nombres y Apellidos</label>
+            <input type="text" class="form-control" name="nombrecompleto" placeholder="Nombres y Apellidos">
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Dirección</label>
+            <input type="text" class="form-control" name="direcciondeusuario" placeholder="Ingrese su dirección">
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Telefono</label>
+            <input type="number" class="form-control" name="telefonousuario" placeholder="Ingrese su número de telefono">
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Nombre de usuario</label>
+            <input type="text" class="form-control" name="user_usu" placeholder="Ingrese su nombre de usuario">
+    </div>
+    <div class="mb-1">
+        <label for=""><font color="blue">Contraseña</label>
+            <input type="password" class="form-control" name="password_usuario" placeholder="Crear contraseña">
+    </div>
+   
+
+    <br>
+    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<button type="submit" class="btn btn-primary" align="center">Registrar</button>
+</form>
+
+{%include 'sitio/footer.html'%}
